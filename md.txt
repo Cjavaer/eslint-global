@@ -1,0 +1,13 @@
+eslint 在程序开发过程中能够对代码格式进行实时验证，并能够在项目中进行风格统一，对于阅读有良好的体验提升。下面记录一下这次配置的全过程。
+
+1.因为如果是每个项目都有一个eslint的配置文件，这样会造成复杂度和繁琐程度，所以需求目标是在溢出配置，所有的项目都可以共用配置文件。刚好vscode为我们提供了这种复用的机制。
+  ● 第一步  在vscode的扩展栏下载eslint的扩展插件，下载完成后再vscode的系统设置里面会多出许多有关eslint的配置，可以参考注释了解各个配置的作用。
+  ● 第二步就要新建一个用来复用的eslint配置文件夹，是一个package格式的文件，里面至少有package.json,eslintrc,eslintignore文件，然后就是通过npm下载一些必备的和可定制的npm包，这里有一个要求就是eslint不要全局安装，不然可能会造成配置文件夹不能在其他项目使用的情况。在文件夹下面下载eslint的包，然后可以下载自己的规则解析器，这里推荐babel-eslint,可以在eslintrc.json文件中parse中选择自己的选择器。在elsint下载完成后，可以执行eslint --init  会在目录下生成一个基本的配置文件，可以在此基础上进行修改。
+  ● 第三步，在基本的npm包下载后就可以对vscode编辑器的elsint配置进行配置。有几个是必须配置的，首先
+      ○ 关闭vscode自带的验证规则  "javascript.validate.enable": false。
+      ○ 关闭 "files.autoSave": "off", 因为如果是选择delay在.vue文件时自动修复会失败
+      ○ 然后就是eslint的相关配置，也是最重要的 "eslint.options":{ "configFile":'刚才建的目录的下json配置文件（路径写全）'}，这里面还有很多配置，比如可以在这里配置全局的elsint插件。
+      ○ 还有一个配置很重要 "eslint.nodePath": "刚才新建文件的node_modules目录，目录也要写完成",这个作用是让eslint在这个文件夹下寻找eslint包和其他包。这个不配置，无法在其他文件夹使用共用配置文件。
+      ○ 还有就是"eslint.validate": [ { "language": "javascript", "autoFix": true}, { "language": "html", "autoFix": true}, { "language": "vue", "autoFix": true} ],这个配置可以在下载相应的插件后对文件进行自动修复和提示错误。
+
+

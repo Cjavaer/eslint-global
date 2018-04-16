@@ -1,0 +1,26 @@
+{
+  "name": "eslint-local-use",
+  "version": "0.0.1",
+  "description": "本地的esLint检测配置文件",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "eslint",
+    "all"
+  ],
+  "author": "zhangwenjun@variflight.com",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-eslint": "^8.2.2",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "eslint-plugin-vue": "^4.4.0",
+    "eslint-plugin-html": "^4.0.2"
+  }
+}
